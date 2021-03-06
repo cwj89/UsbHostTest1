@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
             }
             //Toast.makeText(this,deviceList.values.firstOrNull()!!.deviceName.toString() , Toast.LENGTH_LONG).show()
 
-            Toast.makeText(this, str , Toast.LENGTH_LONG).show()
-            Toast.makeText(this, str , Toast.LENGTH_LONG).show()
+
+            Toast.makeText(this, str + " dfda " , Toast.LENGTH_LONG).show()
 
             /*
             if(device != null){
