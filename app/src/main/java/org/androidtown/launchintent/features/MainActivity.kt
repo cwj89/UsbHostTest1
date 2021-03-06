@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                 aMain_log_etv.setText(deviceList.toString())
             }*/
             var str = ""
+            Toast.makeText(this, str , Toast.LENGTH_LONG).show()
+            Toast.makeText(this, str , Toast.LENGTH_LONG).show()
+
             deviceList.values.forEach {
                 if(it.vendorId == 1155){
                     //do something
