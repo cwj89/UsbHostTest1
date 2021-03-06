@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 if(it.vendorId == 1155){
                     //do something
                 }
-                str += it.vendorId.toString() + "  ,  "
+                str += it.vendorId.toString() + "  ,  1 "
             }
             //Toast.makeText(this,deviceList.values.firstOrNull()!!.deviceName.toString() , Toast.LENGTH_LONG).show()
 
