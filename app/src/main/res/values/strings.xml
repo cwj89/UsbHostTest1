@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">launchIntent</string>
+
+    <string name="aMain_status_txt">Current Status.</string>
+    <string name="aMain_input_txt">No Input data.</string>
+    <string name="aMain_output_txt">No Output data.</string>
+    <string name="aMain_option_txt">Open wireless setting intent.</string>
+    <string name="aMain_first_key_text">&#160;First key =>&#160;</string>
+    <string name="aMain_second_key_text">&#160;Second key =>&#160;</string>
+    <string name="aMain_third_key_text">&#160;Third key =>&#160;</string>
+    <string name="aMain_save_key_text">Save</string>
+    <string name="aMain_device_text">No connected device.</string>
+</resources>
