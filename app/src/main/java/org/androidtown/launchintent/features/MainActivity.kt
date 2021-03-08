@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 	}
 	private fun initialize() {
 		// 코드 업데이트 테스트 cwj_주석_2021-03-08_오후 5:26
+		// 코드 업데이트 테스트 2 cwj_주석_2021-03-08_오후 5:40
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
 		
