@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.androidtown.launchintent.R
 
 class MainActivity : AppCompatActivity() {
-	
 	private lateinit var mainListener: MainListener
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -22,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         */
 		
 	}
-	
 	private fun initialize() {
+		// 코드 업데이트 테스트 cwj_주석_2021-03-08_오후 5:26
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
 		
@@ -38,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 				aMain_log_etv.setText(deviceList.toString())
 			}*/
 			var str = ""
-			Toast.makeText(this, str, Toast.LENGTH_LONG).show()
 			Toast.makeText(this, str, Toast.LENGTH_LONG).show()
 			
 			deviceList.values.forEach {

@@ -9,6 +9,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.androidtown.launchintent.R
 
+// 버튼 인듯 ? cwj_주석_2021-03-08_오후 4:43
 class MainListener(private val activity: Activity) {
 	fun initializeListeners() {
 		activity.aMain_btn_option_wireless.setOnClickListener {
@@ -16,7 +17,6 @@ class MainListener(private val activity: Activity) {
 			var intent = Intent(Settings.ACTION_WIRELESS_SETTINGS)
 			activity.startActivity(intent)
 		}
-		
 		val firstSpinner: Spinner = activity.aMain_key_mapping_first_spnr
 		val secondSpinner: Spinner = activity.aMain_key_mapping_second_spnr
 		val thirdSpinner: Spinner = activity.aMain_key_mapping_third_spnr
@@ -30,7 +30,6 @@ class MainListener(private val activity: Activity) {
 			secondSpinner.adapter = adapter
 			thirdSpinner.adapter = adapter
 		}
-		
 		activity.aMain_key_mapping_save_btn.setOnClickListener {
 			activity.aMain_output_tv.text =
 				"${firstSpinner.selectedItem} / ${secondSpinner.selectedItem} / ${thirdSpinner.selectedItem} has saved"
