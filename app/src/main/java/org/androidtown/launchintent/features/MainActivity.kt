@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 	//val manager = getSystemService(Context.USB_SERVICE) as UsbManager
 	//val deviceList : HashMap<String, UsbDevice> = manager.deviceList
 	//var device = deviceList["deviceName"]
-
 		
 	}
 	private fun initialize() {
