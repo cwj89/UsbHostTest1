@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		initialize()
-
 	//val manager = getSystemService(Context.USB_SERVICE) as UsbManager
 	//val deviceList : HashMap<String, UsbDevice> = manager.deviceList
 	//var device = deviceList["deviceName"]
