@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
 		
+		
 		aMain_device_clo.setOnClickListener {
 			//Toast.makeText(this,"refreshed", Toast.LENGTH_LONG).show()
 			val manager = getSystemService(Context.USB_SERVICE) as UsbManager
