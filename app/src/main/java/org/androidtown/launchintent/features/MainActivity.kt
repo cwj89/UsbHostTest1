@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 		// 코드 업데이트 테스트 cwj_주석_2021-03-08_오후 5:26
 		// 코드 업데이트 테스트 2 cwj_주석_2021-03-08_오후 5:40
 		// 코드 업데이트 테스트 3 cwj_주석_2021-03-09_오전 10:07
+		// 코드 업데이트 테스트 4
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
 		
