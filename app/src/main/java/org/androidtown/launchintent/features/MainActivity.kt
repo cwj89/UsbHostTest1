@@ -20,13 +20,6 @@ class MainActivity : AppCompatActivity() {
 //		var device = deviceList["deviceName"]
 	}
 	private fun initialize() {
-		// 코드 업데이트 테스트 cwj_주석_2021-03-08_오후 5:26
-		// 코드 업데이트 테스트 2 cwj_주석_2021-03-08_오후 5:40
-		// 코드 테스트 안드로이드 스튜디오 내 업데이트 cwj_주석_2021-03-09_오후 2:43
-		// 코드 테스트 안드로이드 스튜디오 내 업데이트 2 cwj_주석_2021-03-09_오후 2:49
-		// 코드 테스트 3 cwj_주석_2021-03-09_오후 3:04
-		// 깃 허브 테스트 1 cwj_주석_2021-03-09_오후 3:09
-		// test_copy_test cwj_주석_2021-03-09_오후 4:39
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
 		
