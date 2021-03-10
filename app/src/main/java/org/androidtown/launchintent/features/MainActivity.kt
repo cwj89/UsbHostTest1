@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		initialize()
-
-	//val manager = getSystemService(Context.USB_SERVICE) as UsbManager
-	//val deviceList : HashMap<String, UsbDevice> = manager.deviceList
-	//var device = deviceList["deviceName"]
+		
+//		val manager = getSystemService(Context.USB_SERVICE) as UsbManager
+//		val deviceList : HashMap<String, UsbDevice> = manager.deviceList
+//		var device = deviceList["deviceName"]
 	}
 	private fun initialize() {
 		// 코드 업데이트 테스트 cwj_주석_2021-03-08_오후 5:26
