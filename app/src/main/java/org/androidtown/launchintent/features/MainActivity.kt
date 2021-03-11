@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		initialize()
-		
 //		val manager = getSystemService(Context.USB_SERVICE) as UsbManager
 //		val deviceList : HashMap<String, UsbDevice> = manager.deviceList
 //		var device = deviceList["deviceName"]
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 	private fun initialize() {
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
-		
 		
 		aMain_device_clo.setOnClickListener {
 			//Toast.makeText(this,"refreshed", Toast.LENGTH_LONG).show()

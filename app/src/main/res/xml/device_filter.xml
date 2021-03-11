@@ -8,5 +8,8 @@
 	<usb-device vendor-id="5426" product-id="605"/>
 
 	<usb-device vendor-id="1133" product-id="49738"/>
-
+	
+	<!-- DELL 키보드 -->
+	<usb-device vendor-id="16700" product-id="8465"/>
+	
 </resources>
