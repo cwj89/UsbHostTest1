@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 				// cwj_주석_2021-03-12_오후 12:25
 				if (it.vendorId == 16700) {
 					//do something
-					aMain_device_tv.text = deviceList.values.firstOrNull()!!.deviceName.toString()
+					aMain_device_tv.text = deviceList.values.firstOrNull()!!.productName
 					aMain_status_iv.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
 					Toast.makeText(this, str + "test", Toast.LENGTH_LONG).show()
 				}

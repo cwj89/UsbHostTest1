@@ -48,16 +48,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_activity_main_status_disconnected" />
-
+    
             <TextView
-                android:id="@+id/aMain_device_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/aMain_device_text"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/aMain_status_iv" />
+                    android:id="@+id/aMain_device_tv"
+                    android:layout_width="189dp"
+                    android:layout_height="21dp"
+                    android:text="@string/aMain_device_text"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aMain_status_iv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
