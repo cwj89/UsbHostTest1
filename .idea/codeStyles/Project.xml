@@ -30,9 +30,6 @@
     <MarkdownNavigatorCodeStyleSettings>
       <option name="RIGHT_MARGIN" value="72" />
     </MarkdownNavigatorCodeStyleSettings>
-    <Objective-C-extensions>
-      <file />
-    </Objective-C-extensions>
     <codeStyleSettings language="CMake">
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
