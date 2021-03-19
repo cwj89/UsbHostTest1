@@ -1,11 +1,5 @@
 package org.androidtown.launchintent.features
 
-
-
-
-
-
-
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
