@@ -39,16 +39,26 @@ class MainActivity : AppCompatActivity() {
 				//do something
 				device = it.apply {  }
 				aMain_device_tv.text = it.productName
-				aMain_status_iv.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
+				aMain_status_iv
+					.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
 				usbManager.requestPermission(device, permissionIntent)
 				registerReceiver(usbReceiver, filter)
 				Log.d("device_fined", "$device")
+				
+				
+				
+				
+				
+				
+				
 			}
 		}
 		
 		Log.d("device_fined", "$device")
 		
 		initialize()
+		
+		
 		
 		
 //		val manager = getSystemService(Context.USB_SERVICE) as UsbManager
