@@ -44,26 +44,14 @@ class MainActivity : AppCompatActivity() {
 				usbManager.requestPermission(device, permissionIntent)
 				registerReceiver(usbReceiver, filter)
 				Log.d("device_fined", "$device")
-				
-				
-				
-				
-				
-				
-				
 			}
 		}
 		
 		Log.d("device_fined", "$device")
 		
+		
+		
 		initialize()
-		
-		
-		
-		
-//		val manager = getSystemService(Context.USB_SERVICE) as UsbManager
-//		val deviceList : HashMap<String, UsbDevice> = manager.deviceList
-//		var device = deviceList["deviceName"]
 	}
 	
 	// 버튼 구성 메서드 cwj_주석_2021-03-12_오전 10:31
