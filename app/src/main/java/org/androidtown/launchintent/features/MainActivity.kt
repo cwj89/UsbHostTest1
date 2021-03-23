@@ -58,6 +58,13 @@ class MainActivity : AppCompatActivity() {
 	private fun initialize() {
 		mainListener = MainListener(this)
 		mainListener.initializeListeners()
+		lateinit var bytes: ByteArray
+		val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
+		val TIMEOUT = 0
+		val forceClaim = true
+		val test = "1"
+		
+		bytes = test.toByteArray()
 		
 		// no connected device 라고 나오는 레이아웃 클릭시 동작
 		// cwj_주석_2021-03-12_오전 10:46
@@ -81,7 +88,17 @@ class MainActivity : AppCompatActivity() {
 					device = it.apply {  }
 					aMain_device_tv.text = it.productName
 					aMain_status_iv.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
-					Log.d("device_fined", "$device")
+//					Log.d("device_fined", "$device")
+					
+					device?.getInterface(0)?.also { intf ->
+						intf.getEndpoint(0)?.also { endpoint ->
+							usbManager.openDevice(device)?.apply {
+								claimInterface(intf, forceClaim)
+								bulkTransfer(endpoint, bytes, bytes.size, TIMEOUT) //do in another thread
+							}
+						}
+					}
+					Log.d("device_fined", "${bytes.toString()}")
 				}
 			}
 			//Toast.makeText(this,deviceList.values.firstOrNull()!!.deviceName.toString() , Toast.LENGTH_LONG).show()
