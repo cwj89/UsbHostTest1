@@ -5,13 +5,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.hardware.usb.UsbDevice
-import android.hardware.usb.UsbManager
+import android.hardware.usb.*
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.androidtown.launchintent.R
+
 
 private const val ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION"
 
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 		mainListener.initializeListeners()
 		lateinit var bytes: ByteArray
 		val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
-		val TIMEOUT = 0
+		val TIMEOUT = 250
 		val forceClaim = true
 		val test = "1"
 		
@@ -79,6 +79,9 @@ class MainActivity : AppCompatActivity() {
 			val deviceList = manager.deviceList
 			lateinit var device: UsbDevice
 			
+			// mLog(connection +"\n"+ device +"\n"+ request +"\n"+
+			// packetSize);
+			val a = "12"
 			// deviceList 에서 각각의 값을 검사함 cwj_주석_2021-03-12_오후 12:03
 			deviceList.values.forEach {
 				// .vendorId 로 vendorId 에 접근하고 타겟할 vendorId 입력 후 동작
@@ -90,32 +93,34 @@ class MainActivity : AppCompatActivity() {
 					aMain_status_iv.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
 //					Log.d("device_fined", "$device")
 					
+					bytes = a.toByteArray()
+					
+					
 					device?.getInterface(0)?.also { intf ->
-						intf.getEndpoint(0)?.also { endpoint ->
+						intf.getEndpoint(1)?.also { endpoint ->
 							usbManager.openDevice(device)?.apply {
 								claimInterface(intf, forceClaim)
-								bulkTransfer(endpoint, bytes, bytes.size, TIMEOUT) //do in another thread
+								bulkTransfer(endpoint, bytes, bytes.size, 250) //do in another thread
+								Log.d("device_fined", "${bytes.size}")
 							}
 						}
 					}
-					Log.d("device_fined", "${bytes.toString()}")
 				}
 			}
 			//Toast.makeText(this,deviceList.values.firstOrNull()!!.deviceName.toString() , Toast.LENGTH_LONG).show()
 		}
 	}
 	
+
 	private val usbReceiver = object : BroadcastReceiver() {
 		
 		override fun onReceive(context: Context, intent: Intent) {
 			if (ACTION_USB_PERMISSION == intent.action) {
 				synchronized(this) {
 					val device: UsbDevice? = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE)
-					
 					if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
 						device?.apply {
 							//call method to set up device communication
-							Log.d("device_fined", "$device")
 						}
 					} else {
 						Log.d("device_fined", "permission denied for device $device")
