@@ -5,8 +5,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.hardware.usb.*
+import android.hardware.usb.UsbDevice
+import android.hardware.usb.UsbDeviceConnection
+import android.hardware.usb.UsbManager
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 	
 	// 버튼 리스트 객체 받음 cwj_주석_2021-03-12_오전 10:19
 	private lateinit var mainListener: MainListener
-	
+	private val uiHandler = Handler()
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 			// cwj_주석_2021-03-12_오후 12:25
 			if (it.vendorId == 1155) {
 				//do something
-				device = it.apply {  }
+				device = it.apply { }
 				aMain_device_tv.text = it.productName
 				aMain_status_iv
 					.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
@@ -46,13 +49,60 @@ class MainActivity : AppCompatActivity() {
 				Log.d("device_fined", "$device")
 			}
 		}
-		
+		mThread.run()
 		Log.d("device_fined", "$device")
-		
-		
-		
 		initialize()
 	}
+	
+	val mThread = Thread(
+			Runnable {
+				try {
+					lateinit var bytes: ByteArray
+					val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
+					val manager = getSystemService(Context.USB_SERVICE) as UsbManager
+					
+					// USB_SERVICE 에 접근하여 deviceList 받아옴
+					// cwj_주석_2021-03-12_오전 10:48
+					val deviceList = manager.deviceList
+					lateinit var device: UsbDevice
+					val forceClaim = true
+					val connection: UsbDeviceConnection? = null
+					//Thread로 실행할 내용
+					var i = 0
+					Log.i("TreadTest", "i = $i")
+					
+					deviceList.values.forEach {
+						// .vendorId 로 vendorId 에 접근하고 타겟할 vendorId 입력 후 동작
+						// cwj_주석_2021-03-12_오후 12:25
+						if (it.vendorId == 1155) {
+							//do something
+							device = it.apply { }
+							device.getInterface(0).also { intf ->
+								intf.getEndpoint(1)?.also { endpoint ->
+									usbManager.openDevice(device)?.apply {
+										claimInterface(intf, forceClaim)
+										val buffer = ByteArray(endpoint.getMaxPacketSize())
+										val status = connection!!.bulkTransfer(
+												endpoint,
+												buffer,
+												buffer.size,
+												100
+										)
+										Log.d("device_fined", "$buffer")
+										
+									}
+								}
+							}
+						}
+					}
+					
+				} catch (e: Exception) {
+					e.printStackTrace()
+					
+				}
+			}
+	)
+	
 	
 	// 버튼 구성 메서드 cwj_주석_2021-03-12_오전 10:31
 	private fun initialize() {
@@ -88,7 +138,7 @@ class MainActivity : AppCompatActivity() {
 				// cwj_주석_2021-03-12_오후 12:25
 				if (it.vendorId == 1155) {
 					//do something
-					device = it.apply {  }
+					device = it.apply { }
 					aMain_device_tv.text = it.productName
 					aMain_status_iv.setImageDrawable(getDrawable(R.drawable.ic_activity_main_status_connected))
 //					Log.d("device_fined", "$device")
@@ -96,11 +146,16 @@ class MainActivity : AppCompatActivity() {
 					bytes = a.toByteArray()
 					
 					
-					device?.getInterface(0)?.also { intf ->
+					device.getInterface(0).also { intf ->
 						intf.getEndpoint(1)?.also { endpoint ->
 							usbManager.openDevice(device)?.apply {
 								claimInterface(intf, forceClaim)
-								bulkTransfer(endpoint, bytes, bytes.size, 250) //do in another thread
+								bulkTransfer(
+										endpoint,
+										bytes,
+										bytes.size,
+										250
+								) //do in another thread
 								Log.d("device_fined", "${bytes.size}")
 							}
 						}
@@ -111,7 +166,7 @@ class MainActivity : AppCompatActivity() {
 		}
 	}
 	
-
+	
 	private val usbReceiver = object : BroadcastReceiver() {
 		
 		override fun onReceive(context: Context, intent: Intent) {
